@@ -1,6 +1,10 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'inc/Configurable.php';
+require 'inc/Dragon.php';
+require 'inc/Knight.php';
+require 'inc/Game.php';
 
 class workerThread extends Thread {
     public function __construct($i){
@@ -8,10 +12,7 @@ class workerThread extends Thread {
     }
 
     public function run(){
-        while(true){
-            echo $this->i;
-            sleep(1);
-        }
+        
     }
 }
 
