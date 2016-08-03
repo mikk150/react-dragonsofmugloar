@@ -1,6 +1,6 @@
-FROM php:7.0-zts
+FROM php:5.6-zts
 RUN apt-get update && apt-get install git -y \
-    && pecl install pthreads \
+    && pecl install pthreads-2.0.10 \
     && docker-php-ext-enable pthreads \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \

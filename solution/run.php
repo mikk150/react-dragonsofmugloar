@@ -1,22 +1,24 @@
 <?php
+require_once(__DIR__.'/inc/DefeaterThread.php');
+require_once(__DIR__.'/inc/Universe.php');
 
-require 'vendor/autoload.php';
-require 'inc/Configurable.php';
-require 'inc/Dragon.php';
-require 'inc/Knight.php';
-require 'inc/Game.php';
+// Spawn 4 workers for universes
+$p = new Pool(4, Universe::class, ["vendor/autoload.php"]);
 
-class workerThread extends Thread {
-    public function __construct($i){
-        $this->i=$i;
-    }
-
-    public function run(){
-        
-    }
+$tasks = array(
+    new DefeaterThread(1, 1000),
+    new DefeaterThread(2, 1000),
+    new DefeaterThread(3, 1000),
+    new DefeaterThread(4, 1000),
+);
+// Add tasks to pool queue
+foreach ($tasks as $task) {
+    $p->submit($task);
 }
 
-for($i=0;$i<50;$i++){
-    $workers[$i] = new workerThread($i);
-    $workers[$i]->start();
-}
+// shutdown will wait for current queue to be completed
+$p->shutdown();
+// garbage collection check / read results
+$p->collect(function($checkingTask){
+    return $checkingTask->isGarbage(); //collect all universes where there are no knights any more
+});
