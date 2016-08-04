@@ -1,4 +1,9 @@
 # react-dragonsofmugloar
 
-docker build ./
-docker run -it <hash it gave back>
+### Usage
+
+ - install docker (https://www.docker.com/products/docker)
+ - run ```docker run -it mikk150/dragonsofmugloar```
+ - ???
+ - pray to network god
+ - enjoy all the knight being slaughtered
