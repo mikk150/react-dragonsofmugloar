@@ -37,11 +37,14 @@ class DefeaterThread extends Collectable
                         
                         $client->putAsync('http://www.dragonsofmugloar.com/api/game/'.$game->gameId.'/solution', [
                             'json' => $dragonSkills,
-                        ])->then(function ($battleResponse) use ($client, $game, &$defeatedKnights) {
-                            echo $this->thread.' knight slaughtering reason: '.$battleResponse->getBody()->getContents() . PHP_EOL;
+                        ])->then(function ($battleResponse) use ($client, $game, $dragon, &$defeatedKnights) {
+                            $battleRes = json_decode($battleResponse->getBody()->getContents());
                             $defeatedKnights++;
-                            echo $this->thread.' knights slaughtered: '.$defeatedKnights . PHP_EOL;
+
+                            echo date('d-m-Y H:i:s') . ' Universe ' . $this->thread.', '. $battleRes->status . ' attacking ' . $game->getKnight() . ' with dragon (' . $dragon . ')' . PHP_EOL;
+
                             if ($defeatedKnights == $this->defeatKnights) {
+                                echo time() . ' Universe ' . $this->thread.', knights slaughtered: '.$defeatedKnights . PHP_EOL;
                                 $this->setGarbage(); //set current thread as garbage, because all knights in this universe are slaughtered
                             }
                         });

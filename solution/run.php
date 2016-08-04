@@ -6,10 +6,21 @@ require_once(__DIR__.'/inc/Universe.php');
 $p = new Pool(4, Universe::class, ["vendor/autoload.php"]);
 
 $tasks = array(
-    new DefeaterThread(1, 1000),
-    new DefeaterThread(2, 1000),
-    new DefeaterThread(3, 1000),
-    new DefeaterThread(4, 1000),
+    new DefeaterThread(1, 150),
+    new DefeaterThread(2, 150),
+    new DefeaterThread(3, 150),
+    new DefeaterThread(4, 150),
+    new DefeaterThread(5, 150),
+    new DefeaterThread(6, 150),
+    new DefeaterThread(7, 150),
+    new DefeaterThread(8, 150),
+    new DefeaterThread(9, 150),
+    new DefeaterThread(10, 150),
+    new DefeaterThread(11, 150),
+    new DefeaterThread(12, 150),
+    new DefeaterThread(13, 150),
+    new DefeaterThread(14, 150),
+    new DefeaterThread(15, 150),
 );
 // Add tasks to pool queue
 foreach ($tasks as $task) {

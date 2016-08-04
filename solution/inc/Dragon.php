@@ -77,4 +77,14 @@ class Dragon extends Configurable
         }
         return ['dragon' => (array) $this];
     }
+
+    public function __toString()
+    {
+        return strtr('scaleThickness: {scaleThickness}, clawSharpness: {clawSharpness}, wingStrength: {wingStrength}, fireBreath: {fireBreath}', [
+            '{scaleThickness}' => $this->scaleThickness,
+            '{clawSharpness}' => $this->clawSharpness,
+            '{wingStrength}' => $this->wingStrength,
+            '{fireBreath}' => $this->fireBreath,
+        ]);
+    }
 }
