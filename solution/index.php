@@ -25,14 +25,9 @@ for ($i = 0; $i < 1000; $i++) {
             $dragon->setKnightSkills($game->getKnight());
 
             $dragonSkills = $dragon->attack((string) $weather->code);
-
-            if ($dragonSkills === false) {
-                // No dragon flies in storm! No knight fights in storm. My neighbor even doesn't send the dog out.
-                return;
-            }
-
+            
             $client->putAsync('http://www.dragonsofmugloar.com/api/game/'.$game->gameId.'/solution', [
-                'json' => ['dragon' => $dragonSkills],
+                'json' => $dragonSkills,
             ])->then(function ($battleResponse) use ($client, $game) {
                 echo $battleResponse->getBody()->getContents() . PHP_EOL;
             });

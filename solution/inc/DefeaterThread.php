@@ -34,19 +34,9 @@ class DefeaterThread extends Collectable
                         $dragon->setKnightSkills($game->getKnight());
 
                         $dragonSkills = $dragon->attack((string) $weather->code);
-
-                        if ($dragonSkills === false) {
-                            // No dragon flies in storm! No knight fights in storm. My neighbor even doesn't send the dog out.
-                            $defeatedKnights++;
-                            echo $this->thread.' knights slaughtered: '.$defeatedKnights . PHP_EOL;
-                            if ($defeatedKnights == $this->defeatKnights) {
-                                $this->setGarbage(); //set current thread as garbage, because all knights in this universe are slaughtered
-                            }
-                            return;
-                        }
-
+                        
                         $client->putAsync('http://www.dragonsofmugloar.com/api/game/'.$game->gameId.'/solution', [
-                            'json' => ['dragon' => $dragonSkills],
+                            'json' => $dragonSkills,
                         ])->then(function ($battleResponse) use ($client, $game, &$defeatedKnights) {
                             echo $this->thread.' knight slaughtering reason: '.$battleResponse->getBody()->getContents() . PHP_EOL;
                             $defeatedKnights++;

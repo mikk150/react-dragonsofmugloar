@@ -33,7 +33,7 @@ class Dragon extends Configurable
                 break;
             case 'SRO':
                 // No dragon flies in storm! No knight fights in storm. My neighbor even doesn't send the dog out.
-                return false;
+                return null;
             default:
 
                 // get initial skills equal to knights
@@ -75,6 +75,6 @@ class Dragon extends Configurable
                 $this->configure($skills);
                 break;
         }
-        return (array) $this;
+        return ['dragon' => (array) $this];
     }
 }
