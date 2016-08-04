@@ -15,3 +15,8 @@
  - ???
  - pray to network god
  - enjoy all the knights being slaughtered
+
+
+Disclaimer: this was built to run asynchronously using threads on a language that doesn't support asynchronous code or threads.
+
+[logo]: http://www.reactiongifs.com/r/2013/10/tim-and-eric-mind-blown.gif "Mind blown"
