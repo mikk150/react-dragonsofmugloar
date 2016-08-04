@@ -7,6 +7,15 @@
  - Multiple universes for slaughtering knights simultaneously!
  - One universe kills more than one knight at the same time.
  
+### Alternative uses
+
+ - Self DDoS
+ - Deploy on herokuapp and use as dragonsofmugloar.com traffic disruptor
+ 
+### Practical uses
+
+ - Can't think of any
+ 
 
 ### Usage
 
@@ -15,6 +24,7 @@
  - ???
  - pray to network god
  - enjoy all the knights being slaughtered
+
 
 
 Disclaimer: this was built to run asynchronously using threads on a language that doesn't support asynchronous code or threads.
